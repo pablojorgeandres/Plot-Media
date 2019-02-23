@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movi.es</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,600,700,800,900" rel="stylesheet">
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Verdana, sans-serif;
+      width: 100vw;
+      min-height: 100vh;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .container {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      min-height: inherit;
+      display: grid;
+      grid-template: 13vh 87vh / 10% 1fr;
+    }
+    .header {
+      color: white;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 25% 1fr 25%;
+      align-content: center;
+      background-image: linear-gradient(to bottom, #000, #333);
+      box-shadow: 10px 0px 20px black;
+      z-index: 10;
+    }
+    .logo img {
+      width: 170px;
+    }
+    .header input {
+      width: 90%;
+      height: 3em;
+      font-size: 14px;
+      border: 3px solid #666;
+      border-radius: 5px;
+      padding: 0 5px;
+    }
+    .header span{
+      align-self: center;
+    }
+    .user {
+      margin: 0;
+      justify-self: right;
+      align-self: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      font-size: 13px;
+      color: rgb(250, 0 , 0);
+      font-weight: 500;
+    }
+    .user p{
+      justify-self: right;
+      align-self: center;
+    }
+    .profile-pic {
+      margin: 0;
+      padding: 0 10px;
+    }
+    .profile-pic img {
+      width: 45px;
+      border-radius: 50% 50%;
+      border: 3px solid #666; 
+    }
+    .sidebar {
+      margin: 0;
+      padding: 0;
+      background-image: linear-gradient(to left, red, rgb(185, 0, 0));
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 60%;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 0px 10px #000;
+      z-index: 5;
+    }
+    .sidebar div a {
+      color: white;
+    }
+    .sidebar div a:hover {
+      opacity: .75;
+    }    
+    .sidebar i {
+      font-size: 30px;
+    }
+    .sidebar div p {
+      margin: 5px 0 0 0;
+      font-size: 12px;
+    }
+    .icons {
+      display: grid;
+      justify-items: center;
+    }
+    .icons:nth-of-type(4) {
+      align-self: end;
+      padding-bottom: 10px;
+    }
+    .main-content{
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      background-image: linear-gradient(to left, #fff, #bbb);
+    }
+    .movies-row {
+      margin: 0;
+      padding: 30px;
+    }
+    .movies-row h2 {
+      font-size: 24px;
+    }
+    .imgs-track {
+      display: grid;
+      grid-template-rows: auto;
+      grid-auto-columns: minmax(300px, 400px);
+      grid-auto-flow: column;
+      grid-gap: 5px;
+      width: fit-content;
+      overflow: visible;
+    }
+    .thumbs {
+      cursor: pointer;
+      position: relative;
+      display: block;
+    }
+    .hover-thumbs h3 {
+      font-size: 13px;
+      width: 100%;
+    }
+    .hover-thumbs p {
+      font-size: 12px;
+      margin: 0;
+    }
+    .hover-thumbs {
+      background: rgba(0, 0, 0, .6);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: none;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+      z-index: 3;
+    }
+    .thumbs:hover .hover-thumbs {
+      display: grid;
+    }
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+    .movies-row img {
+      width: 100%;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <figure class="logo">
+        <img src="logo.png" alt="">
+      </figure>
+      <span>
+        <input type="text" placeholder="find your program...">
+      </span>
+      <div class="user">
+        <p>Pablo Andrés</p>
+        <figure class="profile-pic">
+          <img src="profile.jpeg" alt="">
+        </figure>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="icons">
+        <a href="#">
+          <i class="fas fa-home"></i>
+        </a>
+        <p>Home</p>
+      </div>
+      <div class="icons">
+        <a href="#">
+          <i class="fas fa-fire"></i>
+        </a>
+        <p>Trending</p>
+      </div>
+      <div class="icons">
+        <a href="#">
+          <i class="fas fa-heart"></i>
+        </a>
+        <p>More Likes</p>
+      </div>
+      <div class="icons">
+        <a href="#">
+          <i class="fas fa-cog"></i>
+        </a>
+        <p>Configuration</p>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="movies-row">
+          <h2>New Releases</h2>
+          <div class="imgs-track">
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-010.jpg" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-001.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-002.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-003.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+                <figure>
+                  <img src="movie-thumb-010.jpg" alt="">
+                </figure>
+                <div class="hover-thumbs">
+                  <h3>Lorem Ipsum</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </a>
+          </div>
+      </div>
+      <div class="movies-row">
+          <h2>Thriller</h2>
+          <div class="imgs-track">
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-004.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-005.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-006.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-007.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+                <figure>
+                  <img src="movie-thumb-007.png" alt="">
+                </figure>
+                <div class="hover-thumbs">
+                  <h3>Lorem Ipsum</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </a>
+          </div>
+      </div>
+      <div class="movies-row">
+          <h2>Drama</h2>
+          <div class="imgs-track">
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-008.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-009.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-010.jpg" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-001.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+                <figure>
+                  <img src="movie-thumb-001.png" alt="">
+                </figure>
+                <div class="hover-thumbs">
+                  <h3>Lorem Ipsum</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </a>
+          </div>
+      </div>
+      <div class="movies-row">
+          <h2>Comedy</h2>
+          <div class="imgs-track">
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-002.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-007.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-010.jpg" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+              <figure>
+                <img src="movie-thumb-005.png" alt="">
+              </figure>
+              <div class="hover-thumbs">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </a>
+            <a href="#" class="thumbs">
+                <figure>
+                  <img src="movie-thumb.jpg" alt="">
+                </figure>
+                <div class="hover-thumbs">
+                  <h3>Lorem Ipsum</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
